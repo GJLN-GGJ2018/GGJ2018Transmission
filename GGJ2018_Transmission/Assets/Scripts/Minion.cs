@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,19 +29,13 @@ public class Minion : Entity
 	[SerializeField]
 	private Vector2 waveAffect;
 
-	[SerializeField]
-	private float hp, damage;
-
-	public const float startHealth = 100;
-
 	public Canvas healthbarCanvas;
 	public Image healthbar;
 
 	private void OnEnable()
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
-		hp = startHealth;
-		damage = 5;
+		hp = maxHP;
 		healthbarCanvas.enabled = false;
 		graphicInitialScaleX = graphic.transform.localScale.x;
 	}
@@ -57,6 +50,27 @@ public class Minion : Entity
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
+		if (collision.gameObject.tag == "Wall")
+		{
+			ContactPoint2D[] contactPoints = new ContactPoint2D[1];
+			var contactCounts = collision.GetContacts(contactPoints);
+			if (contactCounts == 0)
+			{
+				BounceBack((transform.position - collision.transform.position) * CollisionBounceMultiplier);
+			}
+			else
+			{
+				BounceBack(contactPoints[0].normal * CollisionBounceMultiplier);
+			}
+			return;
+		}
+
+		CollideWithEntity(collision);
+
+	}
+
+	private void CollideWithEntity(Collision2D collision)
+	{
 		var otherEntity = collision.gameObject.GetComponent<Entity>();
 		if (otherEntity == null)
 			return;
@@ -64,12 +78,16 @@ public class Minion : Entity
 		if (otherEntity.TeamID != TeamID)
 		{
 			var bounceBack = (Vector2)(transform.position - otherEntity.transform.position) * CollisionBounceMultiplier;
-			rigidbody.velocity += bounceBack;
-			IgnoreMaxSpeedHack = IGNORE_MAX_SPEED_HACK_DURATION;
-			this.Attack((Minion)otherEntity);
-			graphic.transform.localScale = new Vector3(Mathf.Sign(-bounceBack.x) * graphicInitialScaleX, graphic.transform.localScale.y, 1);
+			this.Attack((Entity)otherEntity);
+			BounceBack(bounceBack);
 		}
+	}
 
+	private void BounceBack(Vector2 direction)
+	{
+		rigidbody.velocity += direction;
+		IgnoreMaxSpeedHack = IGNORE_MAX_SPEED_HACK_DURATION;
+		graphic.transform.localScale = new Vector3(Mathf.Sign(-direction.x) * graphicInitialScaleX, graphic.transform.localScale.y, 1);
 	}
 
 	public void AffectByWave(Vector2 wave, int playerID, float strength = 1)
@@ -91,6 +109,12 @@ public class Minion : Entity
 			Destroy(this.gameObject);
 		}
 
+		if (maxHP > hp)
+		{
+			healthbarCanvas.enabled = true;
+			healthbar.fillAmount = hp / maxHP;
+		}
+
 		//Debug.DrawLine(transform.position, transform.position + (Vector3)rigidbody.velocity);
 		if (IsAffectedByWave || AlwaysAffectedByWave)
 		{
@@ -106,6 +130,13 @@ public class Minion : Entity
 
 			}
 
+			if (!AlwaysAffectedByWave)
+			{
+				AffectedByPlayerIDs.Clear();
+				IsAffectedByWave = false;
+				waveAffect = Vector2.zero;
+			}
+
 			if (IgnoreMaxSpeedHack > 0)
 			{
 				IgnoreMaxSpeedHack -= Time.deltaTime;
@@ -119,21 +150,12 @@ public class Minion : Entity
 			{
 				rigidbody.velocity = rigidbody.velocity.normalized * MaxSpeed;
 			}
-
-			if (!AlwaysAffectedByWave)
-			{
-				AffectedByPlayerIDs.Clear();
-				IsAffectedByWave = false;
-				waveAffect = Vector2.zero;
-			}
 		}
 	}
 
-	private void Attack(Minion other)
+	private void Attack(Entity other)
 	{
 		other.hp -= damage;
-		other.healthbarCanvas.enabled = true;
-		other.healthbar.fillAmount = other.hp / startHealth;
 	}
 
 	private Entity GetNearbyEnemyEntity()
