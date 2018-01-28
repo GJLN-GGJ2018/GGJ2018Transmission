@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &227145257 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1105239202857734, guid: b0ffcce1678f5b0419e9d0657ac455a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 723269643}
 --- !u!1001 &238645672
 Prefab:
   m_ObjectHideFlags: 0
@@ -306,6 +311,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 12}
   m_EdgeRadius: 0
+--- !u!1 &269566823 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1020642206058424, guid: 69b48ce62b462ab43bb0e3a36e0127b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1756460746}
 --- !u!1 &359366061
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +389,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &363089270 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1020642206058424, guid: 69b48ce62b462ab43bb0e3a36e0127b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 2076132920}
 --- !u!1001 &472162934
 Prefab:
   m_ObjectHideFlags: 0
@@ -432,6 +447,11 @@ Prefab:
       propertyPath: m_Name
       value: Minion A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114775481118280482, guid: 69b48ce62b462ab43bb0e3a36e0127b9,
+        type: 2}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 1469392311}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69b48ce62b462ab43bb0e3a36e0127b9, type: 2}
   m_IsPrefabParent: 0
@@ -714,6 +734,11 @@ Prefab:
       propertyPath: waveAffect.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114187370340929616, guid: b0ffcce1678f5b0419e9d0657ac455a2,
+        type: 2}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 227145257}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0ffcce1678f5b0419e9d0657ac455a2, type: 2}
   m_IsPrefabParent: 0
@@ -850,6 +875,11 @@ Transform:
   m_Father: {fileID: 792473994}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1188649647 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1105239202857734, guid: b0ffcce1678f5b0419e9d0657ac455a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1215824104}
 --- !u!1001 &1215824104
 Prefab:
   m_ObjectHideFlags: 0
@@ -903,6 +933,11 @@ Prefab:
       propertyPath: m_Name
       value: Minion B (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114187370340929616, guid: b0ffcce1678f5b0419e9d0657ac455a2,
+        type: 2}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 1188649647}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0ffcce1678f5b0419e9d0657ac455a2, type: 2}
   m_IsPrefabParent: 0
@@ -980,6 +1015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e937436373d5b804d8ee97609875257b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1469392311 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1020642206058424, guid: 69b48ce62b462ab43bb0e3a36e0127b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 472162934}
 --- !u!1001 &1521571912
 Prefab:
   m_ObjectHideFlags: 0
@@ -1033,6 +1073,11 @@ Prefab:
       propertyPath: m_Name
       value: Minion B (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114187370340929616, guid: b0ffcce1678f5b0419e9d0657ac455a2,
+        type: 2}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 1586535574}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0ffcce1678f5b0419e9d0657ac455a2, type: 2}
   m_IsPrefabParent: 0
@@ -1084,6 +1129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamAEntities: []
   TeamBEntities: []
+--- !u!1 &1586535574 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1105239202857734, guid: b0ffcce1678f5b0419e9d0657ac455a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1521571912}
 --- !u!1 &1600120052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,6 +1486,11 @@ Prefab:
       propertyPath: m_Name
       value: Minion A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114775481118280482, guid: 69b48ce62b462ab43bb0e3a36e0127b9,
+        type: 2}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 269566823}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69b48ce62b462ab43bb0e3a36e0127b9, type: 2}
   m_IsPrefabParent: 0
@@ -1663,6 +1718,15 @@ Prefab:
       propertyPath: waveAffect.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4758438043721408, guid: 69b48ce62b462ab43bb0e3a36e0127b9, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114775481118280482, guid: 69b48ce62b462ab43bb0e3a36e0127b9,
+        type: 2}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 363089270}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69b48ce62b462ab43bb0e3a36e0127b9, type: 2}
   m_IsPrefabParent: 0
